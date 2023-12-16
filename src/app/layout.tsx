@@ -15,7 +15,7 @@ import { getServerSession } from "next-auth";
 
 
 import NavBar from "@/components/custom/nav-bar";
-import AppProvider from "@/components/custom/providers";
+import AppProvider, { SessionProvider } from "@/components/custom/providers";
 import TrpcProvider from "@/lib/trpc/trpc-provider";
 import { cookies } from "next/headers";
 
@@ -37,12 +37,13 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <TrpcProvider cookies={cookies().toString()}>
-          <AppProvider>
-            <NavBar session={session!} />
-            {children}
-          </AppProvider>
-        </TrpcProvider>
+        <SessionProvider session={session}>
+          <TrpcProvider cookies={cookies().toString()}>
+            <AppProvider>
+              {children}
+            </AppProvider>
+          </TrpcProvider>
+        </SessionProvider>
       </body>
     </html>
   )

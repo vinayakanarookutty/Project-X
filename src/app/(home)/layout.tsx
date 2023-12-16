@@ -1,9 +1,11 @@
-import NavBar from "@/components/custom/nav-bar";
-import { getServerSession } from "next-auth";
-import React from "react";
 
-export default async function HomePageLayout({ children }: React.PropsWithChildren) {
-  const session = await getServerSession()
+import { getNextAuthSession } from "@/lib/next-auth"
+import NavBar from "@/components/custom/nav-bar"
+
+export default async function HomePageLayout({
+  children,
+}: React.PropsWithChildren) {
+  const session = await getNextAuthSession()
   return (
     <div className="relative flex min-h-screen flex-col">
       <NavBar session={session!} />

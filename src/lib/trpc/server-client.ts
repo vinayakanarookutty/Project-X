@@ -1,21 +1,20 @@
 
 import { AppRouter, appRouter } from "@/server";
-import { getEnv } from "@/config/env";
 
-import superjson from 'superjson'
 import { createTRPCContext } from "@/server/trpc";
 import {
-    createTRPCProxyClient,
-    loggerLink,
-    TRPCClientError,
-  } from "@trpc/client";
-  import { callProcedure } from "@trpc/server";
-  import { observable } from "@trpc/server/observable";
-  import { type TRPCErrorResponse } from "@trpc/server/rpc";
-  import { cookies } from "next/headers";
-  import { cache } from "react";
+  createTRPCProxyClient,
+  loggerLink,
+  TRPCClientError,
+} from "@trpc/client";
+import { callProcedure } from "@trpc/server";
+import { observable } from "@trpc/server/observable";
+import { type TRPCErrorResponse } from "@trpc/server/rpc";
+import { cookies } from "next/headers";
+import { cache } from "react";
+import superjson from 'superjson';
   
-const env = getEnv()
+
 
 const createContext = cache(() => {
     return createTRPCContext({

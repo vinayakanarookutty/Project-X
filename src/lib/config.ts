@@ -2,7 +2,7 @@ import { Icons } from "@/components/custom/icons";
 import { MainNavItem } from "@/types";
 
 export const appConfig = {
-    name: "Student Zone",
+    name: "Project X",
     logo: Icons.appLogo,
     mainNav: [
         {
